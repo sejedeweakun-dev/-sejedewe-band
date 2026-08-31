@@ -2,22 +2,21 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    // Background diubah dari hitam pekat menjadi warna smoky/zinc gelap (#121412)
-    <main className="min-h-screen bg-[#121412] text-white font-sans antialiased pb-16">
+    <main className="min-h-screen bg-[#181b18] text-white font-sans antialiased pb-16">
       
-      {/* --- HEADER DENGAN LOGO DIPERBESAR --- */}
-      <header className="flex flex-col items-center pt-8 pb-6 border-b border-zinc-800/80 bg-[#121412]/95 backdrop-blur-md sticky top-0 z-50 shadow-md">
-        {/* Ukuran container logo diperbesar (w-64 md:w-80 dan height h-24 md:h-28) */}
-        <div className="relative w-64 h-24 md:w-80 md:h-28 mb-3 transition-all">
+      {/* --- HEADER LOGO EXTRA BESAR --- */}
+      <header className="flex flex-col items-center pt-8 pb-6 border-b border-zinc-800 bg-[#181b18] sticky top-0 z-50 shadow-xl">
+        {/* Ukuran container logo diperbesar maksimal */}
+        <div className="relative w-80 h-32 md:w-[450px] md:h-40 mb-2 overflow-hidden flex items-center justify-center">
           <Image
             src="/logo1.png"
             alt="Sejedewe Logo"
             fill
-            className="object-contain"
+            className="object-contain scale-125"
             priority
           />
         </div>
-        <p className="text-xs uppercase tracking-widest text-amber-500 font-bold px-4 text-center">
+        <p className="text-sm uppercase tracking-[0.2em] text-amber-500 font-bold px-4 text-center mt-2">
           Indonesian Reggae Music
         </p>
       </header>
@@ -25,7 +24,7 @@ export default function Home() {
       <div className="max-w-4xl mx-auto px-4 mt-8 space-y-8">
         
         {/* Main Hero Card */}
-        <section className="relative overflow-hidden rounded-2xl bg-[#1A1D1A] border border-zinc-800 p-6 md:p-8 shadow-2xl">
+        <section className="relative overflow-hidden rounded-2xl bg-[#222622] border border-zinc-700/60 p-6 md:p-8 shadow-2xl">
           <div className="relative w-full aspect-[16/9] md:aspect-[21/9] mb-6 rounded-xl overflow-hidden bg-zinc-900">
             <Image
               src="/personel.png"
@@ -37,7 +36,7 @@ export default function Home() {
           </div>
 
           <div className="space-y-2">
-            <span className="inline-block px-3 py-1 bg-emerald-900/60 text-emerald-400 text-xs font-semibold rounded-full border border-emerald-700/50">
+            <span className="inline-block px-3 py-1 bg-emerald-900/80 text-emerald-400 text-xs font-semibold rounded-full border border-emerald-600/50">
               OFFICIAL PROFILE
             </span>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight text-amber-400">
@@ -50,8 +49,8 @@ export default function Home() {
         </section>
 
         {/* Tentang Sejedewe */}
-        <section className="bg-[#1A1D1A] border border-zinc-800 rounded-2xl p-6 md:p-8 shadow-lg">
-          <h2 className="text-2xl font-bold text-amber-400 mb-4 border-b border-zinc-800/80 pb-2">
+        <section className="bg-[#222622] border border-zinc-700/60 rounded-2xl p-6 md:p-8 shadow-lg">
+          <h2 className="text-2xl font-bold text-amber-400 mb-4 border-b border-zinc-700/60 pb-2">
             Tentang Sejedewe
           </h2>
           <p className="text-zinc-200 leading-relaxed mb-4">
@@ -63,7 +62,7 @@ export default function Home() {
         </section>
 
         {/* Official Music Video Banner */}
-        <section className="bg-[#1A1D1A] border border-zinc-800 rounded-2xl p-6 md:p-8 shadow-lg">
+        <section className="bg-[#222622] border border-zinc-700/60 rounded-2xl p-6 md:p-8 shadow-lg">
           <h2 className="text-2xl font-bold text-amber-400 mb-2 flex items-center gap-2">
             <svg className="w-6 h-6 text-red-500 fill-current" viewBox="0 0 24 24">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
@@ -78,7 +77,7 @@ export default function Home() {
             href="https://www.youtube.com/channel/UCV4e3owx3eCgFnQpBs5rNQw"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative flex flex-col items-center justify-center w-full aspect-[16/6] bg-[#121412] border border-zinc-800 hover:border-red-600/60 rounded-xl overflow-hidden transition duration-300 p-6 text-center shadow-inner"
+            className="group relative flex flex-col items-center justify-center w-full aspect-[16/6] bg-[#181b18] border border-zinc-700/60 hover:border-red-600/80 rounded-xl overflow-hidden transition duration-300 p-6 text-center shadow-inner"
           >
             <div className="p-4 rounded-full bg-red-600/20 text-red-500 group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white transition duration-300 mb-3 shadow-md">
               <svg className="w-10 h-10 fill-current" viewBox="0 0 24 24">
@@ -97,9 +96,9 @@ export default function Home() {
         {/* Business & Social Media */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Booking Contact */}
-          <section className="bg-[#1A1D1A] border border-amber-500/30 rounded-2xl p-6 flex flex-col shadow-lg">
+          <section className="bg-[#222622] border border-amber-500/40 rounded-2xl p-6 flex flex-col shadow-lg">
             <div>
-              <span className="text-xs uppercase font-bold tracking-wider text-amber-500 bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">
+              <span className="text-xs uppercase font-bold tracking-wider text-amber-500 bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/30">
                 Contact & Booking
               </span>
               <h3 className="text-xl font-bold text-white mt-3 mb-2">
@@ -123,9 +122,9 @@ export default function Home() {
           </section>
 
           {/* Social Media */}
-          <section className="bg-[#1A1D1A] border border-zinc-800 rounded-2xl p-6 flex flex-col shadow-lg">
+          <section className="bg-[#222622] border border-zinc-700/60 rounded-2xl p-6 flex flex-col shadow-lg">
             <div>
-              <span className="text-xs uppercase font-bold tracking-wider text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
+              <span className="text-xs uppercase font-bold tracking-wider text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/30">
                 Social Media
               </span>
               <h3 className="text-xl font-bold text-white mt-3 mb-2">
@@ -141,7 +140,7 @@ export default function Home() {
                 href="https://www.youtube.com/channel/UCV4e3owx3eCgFnQpBs5rNQw"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-3 rounded-xl bg-zinc-800/50 hover:bg-zinc-800 border border-zinc-700/50 transition group"
+                className="flex items-center justify-between p-3 rounded-xl bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/50 transition group"
               >
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-red-600/20 text-red-500 group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white transition">
@@ -158,7 +157,7 @@ export default function Home() {
                 href="https://www.instagram.com/sejedeweofficial/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-3 rounded-xl bg-zinc-800/50 hover:bg-zinc-800 border border-zinc-700/50 transition group"
+                className="flex items-center justify-between p-3 rounded-xl bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/50 transition group"
               >
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-pink-600/20 text-pink-500 group-hover:scale-110 group-hover:bg-pink-600 group-hover:text-white transition">
@@ -176,7 +175,7 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <footer className="mt-16 text-center text-zinc-500 text-xs border-t border-zinc-800/60 pt-8 pb-4">
+      <footer className="mt-16 text-center text-zinc-400 text-xs border-t border-zinc-700/60 pt-8 pb-4">
         <p>&copy; {new Date().getFullYear()} Sejedewe Reggae Band. All rights reserved.</p>
       </footer>
     </main>
