@@ -1,14 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #121412;
+  --background: #0f2316;
   --foreground: #ffffff;
 }
 
+/* Background gradient hijau reggae yang lebih jelas */
 body {
-  background-color: #121412;
+  background: radial-gradient(circle at 50% 20%, #173d24 0%, #0c1a10 60%, #060d08 100%) !important;
+  background-attachment: fixed !important;
   color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }

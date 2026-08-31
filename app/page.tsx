@@ -3,11 +3,11 @@ export default function Home() {
     <main className="min-h-screen bg-reggae-aesthetic text-white font-sans antialiased pb-20">
       
       {/* Header Logo */}
-      <header className="flex flex-col items-center pt-8 pb-5 border-b border-emerald-950/60 bg-[#0d120e]/80 backdrop-blur-md sticky top-0 z-50 glow-header">
+      <header className="flex flex-col items-center pt-8 pb-5 border-b border-emerald-800/40 bg-[#0c1a10]/80 backdrop-blur-md sticky top-0 z-50">
         <img
           src="/logo1.png"
           alt="Sejedewe Logo"
-          className="h-32 md:h-44 w-auto object-contain mb-3 drop-shadow-[0_0_15px_rgba(34,197,94,0.3)] transition-transform duration-300 hover:scale-105"
+          className="h-32 md:h-44 w-auto object-contain mb-3 drop-shadow-[0_0_20px_rgba(34,197,94,0.4)]"
         />
         <p className="text-xs uppercase tracking-[0.25em] text-amber-400 font-semibold bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
           Indonesian Reggae Music
