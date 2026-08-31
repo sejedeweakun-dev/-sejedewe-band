@@ -1,13 +1,13 @@
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#141714] text-white font-sans antialiased pb-16">
+    <main className="min-h-screen bg-[#121412] text-white font-sans antialiased pb-16">
       
       {/* Header Logo */}
-      <header className="flex flex-col items-center pt-6 pb-4 border-b border-zinc-800 bg-[#141714] sticky top-0 z-50">
+      <header className="flex flex-col items-center pt-6 pb-4 border-b border-zinc-800 bg-[#121412] sticky top-0 z-50">
         <img
           src="/logo1.png"
           alt="Sejedewe Logo"
-          className="h-20 w-auto object-contain mb-1"
+          className="h-20 w-auto object-contain mb-2"
         />
         <p className="text-xs uppercase tracking-widest text-amber-500 font-semibold">
           Indonesian Reggae Music
@@ -17,7 +17,7 @@ export default function Home() {
       <div className="max-w-4xl mx-auto px-4 mt-8 space-y-8">
         
         {/* Banner Utama */}
-        <section className="overflow-hidden rounded-2xl bg-[#1c201c] border border-zinc-800 p-6 md:p-8 shadow-xl">
+        <section className="overflow-hidden rounded-2xl bg-[#1a1d1a] border border-zinc-800 p-6 md:p-8 shadow-xl">
           <div className="w-full mb-6 rounded-xl overflow-hidden bg-black/40">
             <img
               src="/personel.png"
@@ -40,7 +40,7 @@ export default function Home() {
         </section>
 
         {/* Tentang Sejedewe */}
-        <section className="bg-[#1c201c] border border-zinc-800 rounded-2xl p-6 md:p-8 shadow-md">
+        <section className="bg-[#1a1d1a] border border-zinc-800 rounded-2xl p-6 md:p-8 shadow-md">
           <h2 className="text-2xl font-bold text-amber-400 mb-4 border-b border-zinc-800 pb-2">
             Tentang Sejedewe
           </h2>
@@ -53,7 +53,7 @@ export default function Home() {
         </section>
 
         {/* Official Music Video Banner */}
-        <section className="bg-[#1c201c] border border-zinc-800 rounded-2xl p-6 md:p-8 shadow-md">
+        <section className="bg-[#1a1d1a] border border-zinc-800 rounded-2xl p-6 md:p-8 shadow-md">
           <h2 className="text-2xl font-bold text-amber-400 mb-2">
             Official Music Video
           </h2>
@@ -65,7 +65,7 @@ export default function Home() {
             href="https://www.youtube.com/channel/UCV4e3owx3eCgFnQpBs5rNQw"
             target="_blank"
             rel="noopener noreferrer"
-            className="group block w-full bg-[#141714] border border-zinc-800 hover:border-red-600/60 rounded-xl transition p-8 text-center"
+            className="group block w-full bg-[#121412] border border-zinc-800 hover:border-red-600/60 rounded-xl transition p-8 text-center"
           >
             <div className="w-12 h-12 mx-auto rounded-full bg-red-600/20 text-red-500 group-hover:bg-red-600 group-hover:text-white transition flex items-center justify-center mb-3">
               ▶
@@ -83,7 +83,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
           {/* Booking Contact */}
-          <section className="bg-[#1c201c] border border-amber-500/30 rounded-2xl p-6 flex flex-col shadow-md">
+          <section className="bg-[#1a1d1a] border border-amber-500/30 rounded-2xl p-6 flex flex-col shadow-md">
             <div>
               <span className="text-xs uppercase font-bold tracking-wider text-amber-500 bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">
                 Contact & Booking
@@ -106,7 +106,7 @@ export default function Home() {
           </section>
 
           {/* Social Media */}
-          <section className="bg-[#1c201c] border border-zinc-800 rounded-2xl p-6 flex flex-col shadow-md">
+          <section className="bg-[#1a1d1a] border border-zinc-800 rounded-2xl p-6 flex flex-col shadow-md">
             <div>
               <span className="text-xs uppercase font-bold tracking-wider text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
                 Social Media

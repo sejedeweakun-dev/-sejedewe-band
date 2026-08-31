@@ -1,15 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --background: #141714;
-  --foreground: #ffffff;
+@theme {
+  --color-background: #121412;
+  --color-foreground: #ffffff;
 }
 
 body {
-  color: var(--foreground);
-  background-color: var(--background);
+  background-color: #121412;
+  color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
