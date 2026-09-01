@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0f2316;
+  --background: #14381e;
   --foreground: #ffffff;
 }
 
-/* Background gradient hijau reggae yang lebih jelas */
+/* Background hijau khas logo Sejedewe dengan gradasi smooth */
 body {
-  background: radial-gradient(circle at 50% 20%, #173d24 0%, #0c1a10 60%, #060d08 100%) !important;
+  background: radial-gradient(circle at 50% 0%, #1e522d 0%, #12331c 50%, #0a1c0f 100%) !important;
   background-attachment: fixed !important;
   color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
