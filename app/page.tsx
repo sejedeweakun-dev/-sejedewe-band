@@ -2,17 +2,17 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-reggae-aesthetic text-white font-sans antialiased pb-20">
       
-      {/* Header Logo */}
-      <header className="flex flex-col items-center pt-3 pb-2 border-b border-emerald-800/40 bg-[#0c1a10]/80 backdrop-blur-md sticky top-0 z-50">
-        <img
-            src="/logo1.png"
-            alt="Sejedewe Logo"
-            className="h-36 md:h-52 w-auto object-contain -mb-1 drop-shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-transform duration-300 hover:scale-105"
-        />
-        <p className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-amber-400 font-semibold bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/20">
-          Indonesian Reggae Music
-        </p>
-      </header>
+      {/* Header Logo (Ikut ter-scroll / Tidak Sticky) */}
+<header className="flex flex-col items-center pt-4 pb-3 border-b border-emerald-800/40 bg-[#0c1a10]">
+  <img
+    src="/logo1.png"
+    alt="Sejedewe Logo"
+    className="h-40 md:h-56 w-auto object-contain mb-2 drop-shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-transform duration-300 hover:scale-105"
+  />
+  <p className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-amber-400 font-semibold bg-amber-500/10 px-3 py-0.5 rounded-full border border-amber-500/20">
+    Indonesian Reggae Music
+  </p>
+</header>
 
       <div className="max-w-4xl mx-auto px-4 mt-10 space-y-8">
         
