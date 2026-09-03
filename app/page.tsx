@@ -137,10 +137,10 @@ export default function Home() {
                 <Play className="w-7 h-7 fill-current ml-1 group-hover:scale-110 transition-transform" />
               </div>
               <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">
-                Putar Video Musik Sejedewe
+                Putar Video Langsung (Pop-up Player)
               </h3>
-              <p className="text-xs text-zinc-400 mt-1">
-                Klik untuk memutar video langsung
+              <p className="text-xs text-amber-400 mt-1">
+                ▶ Klik untuk tonton di sini tanpa pindah halaman
               </p>
             </button>
           </motion.div>
