@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { motion, Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import {
   Play,
   Camera,
@@ -11,10 +11,10 @@ import {
   Music2,
   Send,
   Youtube,
-  Instagram,
   Radio,
   ExternalLink,
   ChevronRight,
+  X,
 } from "lucide-react";
 
 // Variasi Animasi dengan Tipe TypeScript
@@ -29,11 +29,11 @@ const staggerContainer: Variants = {
     opacity: 1,
     transition: { staggerChildren: 0.15 },
   },
-
 };
 
 export default function Home() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+
   return (
     <main className="min-h-screen bg-[#08120a] text-white font-sans antialiased pb-24 overflow-x-hidden selection:bg-amber-400 selection:text-black">
       
@@ -125,30 +125,24 @@ export default function Home() {
             <h2 className="text-2xl font-bold text-amber-400">Official Music Video</h2>
           </div>
           <p className="text-zinc-400 text-sm mb-6">
-            Tonton karya video musik resmi Sejedewe langsung di channel YouTube Official.
+            Klik di bawah untuk memutar video musik resmi Sejedewe langsung di web ini.
           </p>
           
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <a
-              href="https://www.youtube.com/channel/UCV4e3owx3eCgFnQpBs5rNQw"
-              target="_blank"
-              rel="noopener noreferrer"
+          <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
+            <button
+              onClick={() => setSelectedVideo("videoseries?list=UUV4e3owx3eCgFnQpBs5rNQw")}
               className="group block w-full bg-[#080d09] border border-emerald-900/50 hover:border-red-500/60 rounded-2xl transition-all duration-300 p-6 md:p-8 text-center shadow-inner relative overflow-hidden"
             >
               <div className="w-16 h-16 mx-auto rounded-full bg-red-600/20 text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 flex items-center justify-center mb-3 shadow-lg group-hover:shadow-red-600/50">
                 <Play className="w-7 h-7 fill-current ml-1 group-hover:scale-110 transition-transform" />
               </div>
-              <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors flex items-center justify-center gap-2">
-                Saksikan Video Musik Sejedewe
-                <ExternalLink className="w-4 h-4 text-zinc-500 group-hover:text-amber-400" />
+              <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">
+                Putar Video Musik Sejedewe
               </h3>
               <p className="text-xs text-zinc-400 mt-1">
-                Klik untuk membuka YouTube Channel &rarr;
+                Klik untuk memutar video langsung
               </p>
-            </a>
+            </button>
           </motion.div>
         </motion.div>
 
@@ -289,27 +283,38 @@ export default function Home() {
                   Subscribe <ChevronRight className="w-3.5 h-3.5" />
                 </span>
               </motion.a>
-
-              <motion.a
-                whileHover={{ x: 4 }}
-                href="https://www.instagram.com/sejedeweofficial/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between p-3.5 rounded-2xl bg-black/40 hover:bg-black/70 border border-emerald-900/40 transition duration-300 group"
-              >
-                <div className="flex items-center gap-3">
-                  <Instagram className="w-5 h-5 text-pink-500 group-hover:scale-110 transition-transform" />
-                  <span className="font-semibold text-sm text-zinc-100">Instagram Official</span>
-                </div>
-                <span className="text-xs text-amber-400 font-medium flex items-center gap-1">
-                  Follow <ChevronRight className="w-3.5 h-3.5" />
-                </span>
-              </motion.a>
             </div>
           </motion.div>
 
         </div>
       </div>
+
+      {/* Pop-up Video Lightbox Modal */}
+      {selectedVideo && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
+          onClick={() => setSelectedVideo(null)}
+        >
+          <div 
+            className="relative w-full max-w-4xl aspect-video bg-black rounded-2xl overflow-hidden border border-emerald-500/40 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedVideo(null)}
+              className="absolute top-3 right-3 z-10 bg-black/60 hover:bg-red-600 text-white p-2 rounded-full backdrop-blur-md transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <iframe
+              className="w-full h-full"
+              src={`https://www.youtube.com/embed/${selectedVideo}&autoplay=1`}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
 
       <footer className="mt-20 text-center text-zinc-500 text-xs border-t border-emerald-950/80 pt-8 pb-4">
         <p>&copy; {new Date().getFullYear()} Sejedewe Reggae Band. All rights reserved.</p>
