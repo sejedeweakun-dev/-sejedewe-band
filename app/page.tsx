@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import {
   Play,
   Camera,
@@ -16,13 +16,13 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-// Variasi Animasi
-const fadeInUp = {
+// Variasi Animasi dengan Tipe TypeScript
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -58,7 +58,7 @@ export default function Home() {
       <div className="max-w-4xl mx-auto px-4 mt-8 space-y-10">
         
         {/* Banner Utama */}
-        <motion.section
+        <motion.div
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
@@ -88,10 +88,10 @@ export default function Home() {
               Pelopor musik santai & pesan sosial dari panggung Reggae Indonesia. Membawa semangat persaudaraan dan energi positif di setiap nada.
             </p>
           </div>
-        </motion.section>
+        </motion.div>
 
         {/* Tentang Sejedewe */}
-        <motion.section
+        <motion.div
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
@@ -107,10 +107,10 @@ export default function Home() {
           <p className="text-zinc-400 text-xs md:text-sm leading-relaxed">
             Diambil dari istilah bahasa Jawa <em className="text-amber-300">"Siji Dewe"</em> yang bermakna <em className="text-amber-300">"Tampil Beda Sendiri"</em>, Sejedewe tetap konsisten menyebarkan energi positif di setiap penampilannya.
           </p>
-        </motion.section>
+        </motion.div>
 
         {/* Official Music Video Banner */}
-        <motion.section
+        <motion.div
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
@@ -125,29 +125,32 @@ export default function Home() {
             Tonton karya video musik resmi Sejedewe langsung di channel YouTube Official.
           </p>
           
-          <motion.a
+          <motion.div
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            href="https://www.youtube.com/channel/UCV4e3owx3eCgFnQpBs5rNQw"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group block w-full bg-[#080d09] border border-emerald-900/50 hover:border-red-500/60 rounded-2xl transition-all duration-300 p-6 md:p-8 text-center shadow-inner relative overflow-hidden"
           >
-            <div className="w-16 h-16 mx-auto rounded-full bg-red-600/20 text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 flex items-center justify-center mb-3 shadow-lg group-hover:shadow-red-600/50">
-              <Play className="w-7 h-7 fill-current ml-1 group-hover:scale-110 transition-transform" />
-            </div>
-            <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors flex items-center justify-center gap-2">
-              Saksikan Video Musik Sejedewe
-              <ExternalLink className="w-4 h-4 text-zinc-500 group-hover:text-amber-400" />
-            </h3>
-            <p className="text-xs text-zinc-400 mt-1">
-              Klik untuk membuka YouTube Channel &rarr;
-            </p>
-          </motion.a>
-        </motion.section>
+            <a
+              href="https://www.youtube.com/channel/UCV4e3owx3eCgFnQpBs5rNQw"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block w-full bg-[#080d09] border border-emerald-900/50 hover:border-red-500/60 rounded-2xl transition-all duration-300 p-6 md:p-8 text-center shadow-inner relative overflow-hidden"
+            >
+              <div className="w-16 h-16 mx-auto rounded-full bg-red-600/20 text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 flex items-center justify-center mb-3 shadow-lg group-hover:shadow-red-600/50">
+                <Play className="w-7 h-7 fill-current ml-1 group-hover:scale-110 transition-transform" />
+              </div>
+              <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors flex items-center justify-center gap-2">
+                Saksikan Video Musik Sejedewe
+                <ExternalLink className="w-4 h-4 text-zinc-500 group-hover:text-amber-400" />
+              </h3>
+              <p className="text-xs text-zinc-400 mt-1">
+                Klik untuk membuka YouTube Channel &rarr;
+              </p>
+            </a>
+          </motion.div>
+        </motion.div>
 
         {/* Gallery Highlight Section */}
-        <motion.section
+        <motion.div
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
@@ -205,13 +208,13 @@ export default function Home() {
               </motion.div>
             ))}
           </motion.div>
-        </motion.section>
+        </motion.div>
 
         {/* Contact & Social Media Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
           {/* Booking Contact */}
-          <motion.section
+          <motion.div
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
@@ -230,21 +233,25 @@ export default function Home() {
                 Hubungi manajemen Sejedewe untuk event, show, dan kolaborasi bisnis:
               </p>
             </div>
-            <motion.a
+            <motion.div
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              href="https://wa.me/6287870010096"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-auto flex items-center justify-center gap-2.5 w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-4 rounded-2xl transition duration-300 text-sm shadow-lg shadow-emerald-950/50"
+              className="mt-auto"
             >
-              <Send className="w-4 h-4 animate-bounce" />
-              WhatsApp: 0878-700-100-96
-            </motion.a>
-          </motion.section>
+              <a
+                href="https://wa.me/6287870010096"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2.5 w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-4 rounded-2xl transition duration-300 text-sm shadow-lg shadow-emerald-950/50"
+              >
+                <Send className="w-4 h-4 animate-bounce" />
+                WhatsApp: 0878-700-100-96
+              </a>
+            </motion.div>
+          </motion.div>
 
           {/* Social Media */}
-          <motion.section
+          <motion.div
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
@@ -296,7 +303,7 @@ export default function Home() {
                 </span>
               </motion.a>
             </div>
-          </motion.section>
+          </motion.div>
 
         </div>
       </div>
