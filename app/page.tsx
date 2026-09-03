@@ -130,7 +130,8 @@ export default function Home() {
           
           <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
             <button
-              onClick={() => setSelectedVideo("videoseries?list=UUV4e3owx3eCgFnQpBs5rNQw")}
+              type="button"
+              onClick={() => setSelectedVideo("https://www.youtube.com/embed/videoseries?list=UUV4e3owx3eCgFnQpBs5rNQw")}
               className="group block w-full bg-[#080d09] border border-emerald-900/50 hover:border-red-500/60 rounded-2xl transition-all duration-300 p-6 md:p-8 text-center shadow-inner relative overflow-hidden"
             >
               <div className="w-16 h-16 mx-auto rounded-full bg-red-600/20 text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 flex items-center justify-center mb-3 shadow-lg group-hover:shadow-red-600/50">
@@ -300,6 +301,7 @@ export default function Home() {
             onClick={(e) => e.stopPropagation()}
           >
             <button
+              type="button"
               onClick={() => setSelectedVideo(null)}
               className="absolute top-3 right-3 z-10 bg-black/60 hover:bg-red-600 text-white p-2 rounded-full backdrop-blur-md transition-colors"
             >
@@ -307,7 +309,7 @@ export default function Home() {
             </button>
             <iframe
               className="w-full h-full"
-              src={`https://www.youtube.com/embed/${selectedVideo}&autoplay=1`}
+              src={`${selectedVideo}&autoplay=1`}
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
