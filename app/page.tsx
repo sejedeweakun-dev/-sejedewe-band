@@ -3,16 +3,16 @@ export default function Home() {
     <main className="min-h-screen bg-reggae-aesthetic text-white font-sans antialiased pb-20">
       
       {/* Header Logo (Ikut ter-scroll / Tidak Sticky) */}
-<header className="flex flex-col items-center pt-4 pb-3 border-b border-emerald-800/40 bg-[#0c1a10]">
-  <img
-    src="/logo1.png"
-    alt="Sejedewe Logo"
-    className="h-40 md:h-56 w-auto object-contain mb-2 drop-shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-transform duration-300 hover:scale-105"
-  />
-  <p className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-amber-400 font-semibold bg-amber-500/10 px-3 py-0.5 rounded-full border border-amber-500/20">
-    Indonesian Reggae Music
-  </p>
-</header>
+      <header className="flex flex-col items-center pt-4 pb-3 border-b border-emerald-800/40 bg-[#0c1a10]">
+        <img
+          src="/logo1.png"
+          alt="Sejedewe Logo"
+          className="h-40 md:h-56 w-auto object-contain mb-2 drop-shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-transform duration-300 hover:scale-105"
+        />
+        <p className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-amber-400 font-semibold bg-amber-500/10 px-3 py-0.5 rounded-full border border-amber-500/20">
+          Indonesian Reggae Music
+        </p>
+      </header>
 
       <div className="max-w-4xl mx-auto px-4 mt-10 space-y-8">
         
@@ -77,6 +77,52 @@ export default function Home() {
               Klik untuk membuka YouTube Channel &rarr;
             </p>
           </a>
+        </section>
+
+        {/* Gallery Highlight Section */}
+        <section className="bg-[#111713]/80 border border-emerald-900/30 rounded-3xl p-6 md:p-8 shadow-lg backdrop-blur-sm">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 border-b border-emerald-900/40 pb-4">
+            <div>
+              <h2 className="text-2xl font-bold text-amber-400 flex items-center gap-2">
+                <span className="text-emerald-500">📷</span> Aksi Panggung Sejedewe
+              </h2>
+              <p className="text-zinc-400 text-xs md:text-sm mt-1">
+                Dokumentasi keseruan panggung Sejedewe (2025 - 2026).
+              </p>
+            </div>
+            <a
+              href="/gallery"
+              className="text-xs font-semibold text-amber-300 hover:text-white transition bg-emerald-600/30 hover:bg-emerald-600 border border-emerald-500/40 px-4 py-2 rounded-xl text-center self-start sm:self-auto"
+            >
+              Jelajahi Galeri Interaktif &rarr;
+            </a>
+          </div>
+
+          {/* Grid 6 Foto Highlight dari folder public/gallery */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {[
+              { src: "/gallery/2026-hunterfestival01.jpg", title: "Hunter Festival 2026" },
+              { src: "/gallery/2026-kuntana01.jpg", title: "Kuntana Stage 2026" },
+              { src: "/gallery/2025-gebyartangerang01.jpg", title: "Gebyar Tangerang 2025" },
+              { src: "/gallery/2025-djarumcoklat01.jpg", title: "Djarum Coklat Tour 2025" },
+              { src: "/gallery/2025-libencoffe01.jpg", title: "Liben Coffee 2025" },
+              { src: "/gallery/2025-soul01.jpg", title: "Soul Reggae Night 2025" },
+            ].map((photo, index) => (
+              <div
+                key={index}
+                className="overflow-hidden rounded-2xl border border-emerald-900/40 bg-black/40 aspect-square group relative transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_25px_rgba(34,197,94,0.3)] cursor-pointer"
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                  <span className="text-xs text-amber-300 font-semibold">{photo.title}</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* Contact & Social Media */}
