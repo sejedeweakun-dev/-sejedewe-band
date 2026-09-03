@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { motion, Variants } from "framer-motion";
 import {
   Play,
@@ -28,9 +29,11 @@ const staggerContainer: Variants = {
     opacity: 1,
     transition: { staggerChildren: 0.15 },
   },
+
 };
 
 export default function Home() {
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   return (
     <main className="min-h-screen bg-[#08120a] text-white font-sans antialiased pb-24 overflow-x-hidden selection:bg-amber-400 selection:text-black">
       
