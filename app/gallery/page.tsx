@@ -34,7 +34,7 @@ export default function GalleryPage() {
     { src: "/gallery/2025-nordphoria01.jpg", title: "Nordphoria Festival 01", category: "2025" },
     { src: "/gallery/2025-nordphoria02.jpg", title: "Nordphoria Festival 02", category: "2025" },
     { src: "/gallery/2025-seradaura01.jpg", title: "Seradaura Event 01", category: "2025" },
-    { src: "/gallery/2025-seradaura02.jpg", title: "Seradaura Event 02", category: "2025" },
+    { src: "/gallery/2025-seradura02.jpg", title: "Seradaura Event 02", category: "2025" },
     { src: "/gallery/2025-setujuan01.jpg", title: "Setujuan Coffee 01", category: "2025" },
     { src: "/gallery/2025-setujuan02.jpg", title: "Setujuan Coffee 02", category: "2025" },
     { src: "/gallery/2025-soul01.jpg", title: "Soul Reggae Night 01", category: "2025" },
