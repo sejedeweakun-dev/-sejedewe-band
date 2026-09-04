@@ -104,10 +104,10 @@ export default function Home() {
             <Music2 className="w-6 h-6 text-emerald-400" /> Tentang Sejedewe
           </h2>
           <p className="text-zinc-200 leading-relaxed mb-4 text-sm md:text-base">
-            <strong className="text-white">Sejedewe</strong> adalah grup musik bergenre <strong className="text-emerald-400">Reggae</strong> asal Indonesia. Dengan ritme yang santai, lirik bernuansa sosial dan kehidupan sehari-hari, Sejedewe membawa semangat persaudaraan yang kuat.
+            <strong className="text-white">Sejedewe</strong> adalah grup musik bergenre <strong className="text-emerald-400">Reggae</strong> asal Tangerang, Indonesia. Dengan ritme santai bervariasi, lirik sosial yang relate dengan kehidupan sehari hari dan warna suara khas yang hanya diperdengarkan lewat lagu lagunya, Sejedewe selalu membawa pesan hangat persaudaraan yang kuat disetiap penampilan.
           </p>
           <p className="text-zinc-400 text-xs md:text-sm leading-relaxed">
-            Diambil dari istilah bahasa Jawa <em className="text-amber-300">"Siji Dewe"</em> yang bermakna <em className="text-amber-300">"Tampil Beda Sendiri"</em>, Sejedewe tetap konsisten menyebarkan energi positif di setiap penampilannya.
+            Diambil dari istilah bahasa Jawa kuno <em className="text-amber-300">"Siji Dewe"</em>  yang memiliki harapan dan doa didalamnya <em className="text-amber-300">"Pesona Beda Sendiri"</em>, selalu prioritas untuk menghibur dengan hati dan ketulusan yang abadi. Sejedewe tampil tetap konsisten menyebarkan energi positif disetiap penampilan dan aksi aksi panggungnya.
           </p>
         </motion.div>
 
