@@ -130,7 +130,7 @@ export default function Home() {
           <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
             <button
               type="button"
-              onClick={() => setSelectedVideo("https://www.youtube.com/embed/videoseries?list=UUV4e3owx3eCgFnQpBs5rNQw")}
+              onClick={() => setSelectedVideo("https://www.youtube.com/watch?v=spYSy34Pdsw")}
               className="group block w-full bg-[#080d09] border border-emerald-900/50 hover:border-red-500/60 rounded-2xl transition-all duration-300 p-6 md:p-8 text-center shadow-inner relative overflow-hidden"
             >
               <div className="w-16 h-16 mx-auto rounded-full bg-red-600/20 text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 flex items-center justify-center mb-3 shadow-lg group-hover:shadow-red-600/50">
