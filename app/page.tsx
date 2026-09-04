@@ -10,7 +10,7 @@ import {
   Sparkles,
   Music2,
   Send,
-  Youtube,
+  Video, // <-- Ganti Youtube menjadi Video di sini
   Radio,
   ChevronRight,
   X,
@@ -120,7 +120,7 @@ export default function Home() {
           className="bg-[#0e1810]/80 border border-emerald-900/40 rounded-3xl p-6 md:p-8 shadow-xl backdrop-blur-md"
         >
           <div className="flex items-center gap-2 mb-2">
-            <Youtube className="w-6 h-6 text-red-500" />
+            <Video className="w-6 h-6 text-red-500" />
             <h2 className="text-2xl font-bold text-amber-400">Official Music Video</h2>
           </div>
           <p className="text-zinc-400 text-sm mb-6">
@@ -276,7 +276,7 @@ export default function Home() {
                 className="flex items-center justify-between p-3.5 rounded-2xl bg-black/40 hover:bg-black/70 border border-emerald-900/40 transition duration-300 group"
               >
                 <div className="flex items-center gap-3">
-                  <Youtube className="w-5 h-5 text-red-500 group-hover:scale-110 transition-transform" />
+                  <Video className="w-5 h-5 text-red-500 group-hover:scale-110 transition-transform" />
                   <span className="font-semibold text-sm text-zinc-100">YouTube Official</span>
                 </div>
                 <span className="text-xs text-amber-400 font-medium flex items-center gap-1">
