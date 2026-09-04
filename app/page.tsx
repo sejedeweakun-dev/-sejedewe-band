@@ -283,7 +283,7 @@ export default function Home() {
 
                   {/* TikTok */}
                   <a
-                    href="https://www.tiktok.com/@sejedewe_official"
+                    href="https://vm.tiktok.com/ZS9B3U2dNRBNN-qtv3F/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-2 bg-[#0e1810] border border-emerald-900/50 rounded-full hover:border-cyan-400 hover:text-cyan-400 transition-all text-sm"
@@ -296,7 +296,7 @@ export default function Home() {
 
                   {/* Facebook */}
                   <a
-                    href="https://www.facebook.com/sejedewe"
+                    href="https://www.facebook.com/share/18cY77na52/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-2 bg-[#0e1810] border border-emerald-900/50 rounded-full hover:border-blue-500 hover:text-blue-400 transition-all text-sm"
