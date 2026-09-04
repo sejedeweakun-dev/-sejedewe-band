@@ -270,7 +270,7 @@ export default function Home() {
             <div className="flex flex-wrap items-center justify-center gap-4">
                   {/* Instagram */}
                   <a
-                    href="https://www.instagram.com/sejedewe_official"
+                    href="https://www.instagram.com/sejedeweofficial?igsi=MWRlYTdvNzJ4cmpudw=="
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-2 bg-[#0e1810] border border-emerald-900/50 rounded-full hover:border-pink-500 hover:text-pink-400 transition-all text-sm"
