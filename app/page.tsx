@@ -42,7 +42,7 @@ export default function Home() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          src="/sejedewe.png"
+          src="/1.png"
           alt="Sejedewe Logo"
           className="h-36 md:h-52 w-auto object-contain mb-2 drop-shadow-[0_0_25px_rgba(34,197,94,0.35)] hover:scale-105 transition-transform duration-300"
         />
