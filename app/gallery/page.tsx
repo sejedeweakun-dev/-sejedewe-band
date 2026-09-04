@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { X } from "lucide-react";
 
 export default function GalleryPage() {
   const [activeFilter, setActiveFilter] = useState("Semua");
@@ -121,10 +122,12 @@ export default function GalleryPage() {
         >
           <div className="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center">
             <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute -top-10 right-0 text-white text-2xl font-bold hover:text-amber-400"
-            >
-              ✕ Tutup
+                type="button"
+                onClick={() => setSelectedImage(null)}
+                className="absolute -top-12 right-0 md:top-2 md:right-2 z-50 flex items-center justify-center w-10 h-10 rounded-full bg-black/60 text-zinc-300 hover:text-white hover:bg-emerald-500/80 border border-white/20 backdrop-blur-md transition-all duration-300 shadow-lg group hover:scale-110 active:scale-95"
+                aria-label="Tutup"
+              >
+                <X className="w-5 h-5 transition-transform group-hover:rotate-90 duration-300" />
             </button>
             <img
               src={selectedImage}
