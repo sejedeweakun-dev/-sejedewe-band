@@ -15,6 +15,7 @@ export default function GalleryPage() {
     { src: "/gallery/2026-hunterfestival02.jpg", title: "Hunter Festival 02", category: "2026" },
     { src: "/gallery/2026-kuntana01.jpg", title: "Kuntana Live 2026", category: "2026" },
     { src: "/gallery/2026-srb01.jpg", title: "Stadion Benteng Reborn 2026", category: "2026" },
+    { src: "/gallery/2026-streakfest.jpg", title: "Streak Fest 2026", category: "2026" },
 
     // --- Tahun 2025 ---
     { src: "/gallery/2025-Cianjur01.jpg", title: "Cianjur Live 01", category: "2025" },
@@ -43,7 +44,7 @@ export default function GalleryPage() {
     { src: "/gallery/2025-superman01.jpg", title: "Superman Event 01", category: "2025" },
     { src: "/gallery/2025-superman02.jpg", title: "Superman Event 02", category: "2025" },
     { src: "/gallery/2025-wonogiri01.jpg", title: "Live Wonogiri 01", category: "2025" },
-    { src: "/gallery/2025-wonogiri02.jpg", title: "Live Wonogiri 02", category: "2025" },
+
     { src: "/gallery/2025-yohee01.jpg", title: "Yohee Event 01", category: "2025" },
     { src: "/gallery/2025-yohee02.jpg", title: "Yohee Event 02", category: "2025" },
   ];
