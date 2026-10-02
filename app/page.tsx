@@ -263,19 +263,19 @@ export default function Home() {
                       id: 1,
                       name: "T-Shirt Sejedewe - Cinta di Pantai Bali (Black)",
                       price: "Rp 135.000",
-                      img: "/gallery/1.png", // Ganti sesuai path foto t-shirt hitam kamu
+                      img: "/gallery/sj1.jpeg", // Ganti sesuai path foto t-shirt hitam kamu
                     },
                     {
                       id: 2,
                       name: "T-Shirt Sejedewe - Cinta di Pantai Bali (White)",
                       price: "Rp 135.000",
-                      img: "/gallery/logo1.png", // Ganti sesuai path foto t-shirt putih kamu
+                      img: "/gallery/sj2.jpeg", // Ganti sesuai path foto t-shirt putih kamu
                     },
                     {
                       id: 3,
                       name: "T-Shirt Wanita Munafik (Black)",
                       price: "Rp 135.000",
-                      img: "/gallery/logo2.png", // Ganti sesuai path foto t-shirt
+                      img: "/gallery/sj3.jpeg", // Ganti sesuai path foto t-shirt
                     },
                   ].map((item) => (
                     <motion.div
