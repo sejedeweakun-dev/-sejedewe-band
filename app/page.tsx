@@ -228,9 +228,9 @@ export default function Home() {
           {/* Grid Produk */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {[
-              { id: 1, name: "T-Shirt Sejedewe Tour Edition", price: "Rp 150.000", img: "/gallery/sj1.jpeg" },
-              { id: 2, name: "Snapback Cap Logo", price: "Rp 95.000", img: "/gallery/sj2.jpeg" },
-              { id: 3, name: "Sticker Pack Limited", price: "Rp 25.000", img: "/gallery/sj3.jpeg" },
+              { id: 1, name: "T-Shirt Sejedewe - Cinta di Pantai Bali (Black)", price: "Rp 135.000", img: "/gallery/sj1.jpeg" },
+              { id: 2, name: "T-Shirt Sejedewe - Cinta di Pantai Bali (White)", price: "Rp 135.000", img: "/gallery/sj2.jpeg" },
+              { id: 3, name: "T-Shirt Wanita Munafik (Black)", price: "Rp 135.000", img: "/gallery/sj3.jpeg" },
             ].map((item) => (
               <motion.div
                 key={item.id}
