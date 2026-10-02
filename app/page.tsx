@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { motion, type Variants } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import {
   Play,
   Camera,
@@ -13,6 +13,7 @@ import {
   Video, // <-- Ganti Youtube menjadi Video di sini
   Radio,
   ChevronRight,
+  ChevronDown,
   X,
 } from "lucide-react";
 
@@ -32,6 +33,11 @@ const staggerContainer: Variants = {
 
 export default function Home() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [showMerch, setShowMerch] = useState<boolean>(false);
+
+  const toggleMerch = () => {
+    setShowMerch((prev) => !prev);
+  }
 
   return (
     <main className="min-h-screen bg-[#08120a] text-white font-sans antialiased pb-24 overflow-x-hidden selection:bg-amber-400 selection:text-black">
@@ -207,61 +213,104 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
-        {/* Merchandise Section - Exclusive Event Only */}
+        {/* Section Merchandise Interactive */}
         <section className="py-12 px-4 max-w-6xl mx-auto">
           <motion.div
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-center mb-10"
+            className="text-center mb-6"
           >
             <span className="inline-block px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-xs font-semibold uppercase tracking-wider mb-3">
               Event Exclusive
             </span>
             <h2 className="text-3xl font-bold text-amber-400 mb-2">Official Merchandise</h2>
-            <p className="text-zinc-400 text-sm max-w-lg mx-auto">
-              Koleksi resmi Sejedewe Band tersedia secara terbatas di <span className="text-emerald-400 font-semibold">booth merchandise resmi</span> pada setiap jadwal penampilan/konser kami.
+            <p className="text-zinc-400 text-sm max-w-lg mx-auto mb-6">
+              Koleksi resmi Sejedewe Band tersedia secara terbatas di{" "}
+              <span className="text-emerald-400 font-semibold">booth merchandise resmi</span> pada setiap jadwal penampilan/konser kami.
             </p>
+
+            {/* Tombol pemicu untuk menampilkan produk */}
+            <button
+              type="button"
+              onClick={toggleMerch}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-950/80 hover:bg-emerald-800/80 border border-emerald-500/50 rounded-full text-white text-sm font-semibold transition-all shadow-lg hover:shadow-emerald-900/40 hover:scale-105 active:scale-95 group"
+            >
+              <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
+              <span>{showMerch ? "Sembunyikan Katalog" : "Klik Disini untuk Melihat Merchandise"}</span>
+              <ChevronDown
+                className={`w-4 h-4 text-emerald-400 transition-transform duration-300 ${
+                  showMerch ? "rotate-180" : "rotate-0"
+                }`}
+              />
+            </button>
           </motion.div>
 
-          {/* Grid Produk */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {[
-              { id: 1, name: "T-Shirt Sejedewe - Cinta di Pantai Bali (Black)", price: "Rp 135.000", img: "/gallery/sj1.jpeg" },
-              { id: 2, name: "T-Shirt Sejedewe - Cinta di Pantai Bali (White)", price: "Rp 135.000", img: "/gallery/sj2.jpeg" },
-              { id: 3, name: "T-Shirt Wanita Munafik (Black)", price: "Rp 135.000", img: "/gallery/sj3.jpeg" },
-            ].map((item) => (
+          {/* Area Gambar Merchandise dengan Animasi Roll Down */}
+          <AnimatePresence>
+            {showMerch && (
               <motion.div
-                key={item.id}
-                whileHover={{ y: -5 }}
-                className="bg-[#0e1810]/80 border border-emerald-900/40 rounded-2xl overflow-hidden shadow-xl backdrop-blur-md flex flex-col justify-between group"
+                initial={{ opacity: 0, height: 0, y: -20 }}
+                animate={{ opacity: 1, height: "auto", y: 0 }}
+                exit={{ opacity: 0, height: 0, y: -20 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="overflow-hidden pt-4"
               >
-                <div className="relative aspect-square overflow-hidden bg-black/40">
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-md border border-white/10 px-2.5 py-1 rounded-full text-[10px] text-zinc-300">
-                    Available On-Stage
-                  </div>
-                </div>
-                <div className="p-5 flex flex-col justify-between flex-1">
-                  <div>
-                    <h3 className="text-lg font-semibold text-white group-hover:text-amber-400 transition-colors">
-                      {item.name}
-                    </h3>
-                    <p className="text-emerald-400 font-bold mt-1 text-sm">{item.price}</p>
-                  </div>
-                  <div className="mt-4 py-2.5 px-3 text-center text-xs font-medium text-zinc-300 bg-emerald-950/40 border border-emerald-800/50 rounded-xl flex items-center justify-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    Dapatkan di Booth Konser
-                  </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                  {[
+                    {
+                      id: 1,
+                      name: "T-Shirt Sejedewe - Cinta di Pantai Bali (Black)",
+                      price: "Rp 135.000",
+                      img: "/gallery/1.png", // Ganti sesuai path foto t-shirt hitam kamu
+                    },
+                    {
+                      id: 2,
+                      name: "T-Shirt Sejedewe - Cinta di Pantai Bali (White)",
+                      price: "Rp 135.000",
+                      img: "/gallery/logo1.png", // Ganti sesuai path foto t-shirt putih kamu
+                    },
+                    {
+                      id: 3,
+                      name: "T-Shirt Wanita Munafik (Black)",
+                      price: "Rp 135.000",
+                      img: "/gallery/logo2.png", // Ganti sesuai path foto t-shirt
+                    },
+                  ].map((item) => (
+                    <motion.div
+                      key={item.id}
+                      whileHover={{ y: -5 }}
+                      className="bg-[#0e1810]/80 border border-emerald-900/40 rounded-2xl overflow-hidden shadow-xl backdrop-blur-md flex flex-col justify-between group"
+                    >
+                      <div className="relative aspect-square overflow-hidden bg-black/40">
+                        <img
+                          src={item.img}
+                          alt={item.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-md border border-white/10 px-2.5 py-1 rounded-full text-[10px] text-zinc-300">
+                          Available On-Stage
+                        </div>
+                      </div>
+                      <div className="p-5 flex flex-col justify-between flex-1">
+                        <div>
+                          <h3 className="text-lg font-semibold text-white group-hover:text-amber-400 transition-colors">
+                            {item.name}
+                          </h3>
+                          <p className="text-emerald-400 font-bold mt-1 text-sm">{item.price}</p>
+                        </div>
+                        <div className="mt-4 py-2.5 px-3 text-center text-xs font-medium text-zinc-300 bg-emerald-950/40 border border-emerald-800/50 rounded-xl flex items-center justify-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                          Dapatkan di Booth Konser
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
-            ))}
-          </div>
+            )}
+          </AnimatePresence>
         </section>
 
         {/* Contact & Social Media Grid */}
