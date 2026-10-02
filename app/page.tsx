@@ -207,6 +207,63 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
+        {/* Merchandise Section - Exclusive Event Only */}
+        <section className="py-12 px-4 max-w-6xl mx-auto">
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <span className="inline-block px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-xs font-semibold uppercase tracking-wider mb-3">
+              Event Exclusive
+            </span>
+            <h2 className="text-3xl font-bold text-amber-400 mb-2">Official Merchandise</h2>
+            <p className="text-zinc-400 text-sm max-w-lg mx-auto">
+              Koleksi resmi Sejedewe Band tersedia secara terbatas di <span className="text-emerald-400 font-semibold">booth merchandise resmi</span> pada setiap jadwal penampilan/konser kami.
+            </p>
+          </motion.div>
+
+          {/* Grid Produk */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {[
+              { id: 1, name: "T-Shirt Sejedewe Tour Edition", price: "Rp 150.000", img: "/gallery/sj1.jpeg" },
+              { id: 2, name: "Snapback Cap Logo", price: "Rp 95.000", img: "/gallery/sj2.jpeg" },
+              { id: 3, name: "Sticker Pack Limited", price: "Rp 25.000", img: "/gallery/sj3.jpeg" },
+            ].map((item) => (
+              <motion.div
+                key={item.id}
+                whileHover={{ y: -5 }}
+                className="bg-[#0e1810]/80 border border-emerald-900/40 rounded-2xl overflow-hidden shadow-xl backdrop-blur-md flex flex-col justify-between group"
+              >
+                <div className="relative aspect-square overflow-hidden bg-black/40">
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-md border border-white/10 px-2.5 py-1 rounded-full text-[10px] text-zinc-300">
+                    Available On-Stage
+                  </div>
+                </div>
+                <div className="p-5 flex flex-col justify-between flex-1">
+                  <div>
+                    <h3 className="text-lg font-semibold text-white group-hover:text-amber-400 transition-colors">
+                      {item.name}
+                    </h3>
+                    <p className="text-emerald-400 font-bold mt-1 text-sm">{item.price}</p>
+                  </div>
+                  <div className="mt-4 py-2.5 px-3 text-center text-xs font-medium text-zinc-300 bg-emerald-950/40 border border-emerald-800/50 rounded-xl flex items-center justify-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Dapatkan di Booth Konser
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
         {/* Contact & Social Media Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
