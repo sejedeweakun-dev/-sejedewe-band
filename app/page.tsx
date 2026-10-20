@@ -1,9 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { shows } from "./data/shows";
+import { highlightPhotos, merchItems, SPOTIFY_ARTIST_ID, SPOTIFY_URL } from "./data/site";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import {
+  CalendarDays,
+  Headphones,
   Play,
   Camera,
   Calendar,
@@ -20,7 +24,7 @@ import {
 // Variasi Animasi dengan Tipe TypeScript
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
 };
 
 const staggerContainer: Variants = {
@@ -35,12 +39,19 @@ export default function Home() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const [showMerch, setShowMerch] = useState<boolean>(false);
 
+  useEffect(() => {
+    if (!selectedVideo) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setSelectedVideo(null);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [selectedVideo]);
+
   const toggleMerch = () => {
     setShowMerch((prev) => !prev);
   }
 
   return (
-    <main className="min-h-screen bg-[#08120a] text-white font-sans antialiased pb-24 overflow-x-hidden selection:bg-amber-400 selection:text-black">
+    <main className="min-h-screen text-white font-sans antialiased pb-24 overflow-x-hidden selection:bg-amber-400 selection:text-black">
       
       {/* Header Logo */}
       <header className="flex flex-col items-center pt-6 pb-4 border-b border-emerald-900/40 bg-[#070e08]/90 backdrop-blur-md">
@@ -48,7 +59,7 @@ export default function Home() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          src="/1.png"
+          src="/logo.webp"
           alt="Sejedewe Logo"
           className="h-36 md:h-52 w-auto object-contain mb-2 drop-shadow-[0_0_25px_rgba(34,197,94,0.35)] hover:scale-105 transition-transform duration-300"
         />
@@ -71,13 +82,13 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="overflow-hidden rounded-3xl bg-gradient-to-b from-[#132518]/90 via-[#0e1a11]/90 to-[#0a120c]/90 border border-emerald-800/40 p-6 md:p-8 shadow-2xl backdrop-blur-md relative"
+          className="overflow-hidden rounded-3xl card-soft p-6 md:p-8 shadow-2xl backdrop-blur-md relative"
         >
           <div className="absolute -top-24 -right-24 w-60 h-60 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
           
           <div className="w-full mb-6 rounded-2xl overflow-hidden border border-emerald-900/50 bg-black/60 shadow-2xl relative group">
             <img
-              src="/personel.png"
+              src="/personel.jpg"
               alt="Sejedewe Reggae Band"
               className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             />
@@ -86,14 +97,14 @@ export default function Home() {
 
           <div className="space-y-4">
             <span className="inline-flex items-center gap-2 px-3.5 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-semibold rounded-full border border-emerald-500/30 tracking-wider">
-              <Radio className="w-3.5 h-3.5 text-emerald-400 animate-ping" />
+              <Radio className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
               OFFICIAL PROFILE
             </span>
-            <h1 className="text-4xl md:text-6xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-amber-300 to-yellow-500">
+            <h1 className="text-4xl md:text-6xl font-black tracking-tight text-transparent grad-flow">
               SEJEDEWE
             </h1>
             <p className="text-zinc-300 text-sm md:text-base max-w-2xl leading-relaxed">
-              Pelopor musik santai & pesan sosial dari panggung Reggae Indonesia. Membawa semangat persaudaraan dan energi positif di setiap nada.
+              Band reggae dari Tangerang dengan musik santai dan pesan sosial. Membawa semangat persaudaraan dan energi positif di setiap nada.
             </p>
           </div>
         </motion.div>
@@ -104,16 +115,16 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="bg-[#0e1810]/80 border border-emerald-900/40 rounded-3xl p-6 md:p-8 shadow-xl backdrop-blur-md relative"
+          className="card-soft rounded-3xl p-6 md:p-8 shadow-xl backdrop-blur-md relative"
         >
           <h2 className="text-2xl font-bold text-amber-400 mb-4 border-b border-emerald-900/50 pb-3 flex items-center gap-2.5">
             <Music2 className="w-6 h-6 text-emerald-400" /> Tentang Sejedewe
           </h2>
           <p className="text-zinc-200 leading-relaxed mb-4 text-sm md:text-base">
-            <strong className="text-white">Sejedewe</strong> adalah grup musik bergenre <strong className="text-emerald-400">Reggae</strong> asal Tangerang, Indonesia. Dengan ritme santai bervariasi, lirik sosial yang relate dengan kehidupan sehari hari dan warna suara khas yang hanya diperdengarkan lewat lagu lagunya, Sejedewe selalu membawa pesan hangat persaudaraan yang kuat disetiap penampilan.
+            <strong className="text-white">Sejedewe</strong> adalah grup musik bergenre <strong className="text-emerald-400">Reggae</strong> asal Tangerang, Indonesia. Dengan ritme santai bervariasi, lirik sosial yang relate dengan kehidupan sehari-hari dan warna suara khas yang hanya diperdengarkan lewat lagu-lagunya, Sejedewe selalu membawa pesan hangat persaudaraan yang kuat di setiap penampilan.
           </p>
-          <p className="text-zinc-400 text-xs md:text-sm leading-relaxed">
-            Diambil dari istilah bahasa Jawa kuno <em className="text-amber-300">"Siji Dewe"</em>  yang memiliki harapan dan doa didalamnya <em className="text-amber-300">"Pesona Beda Sendiri"</em>, selalu prioritas untuk menghibur dengan hati dan ketulusan yang abadi. Sejedewe tampil tetap konsisten menyebarkan energi positif disetiap penampilan dan aksi aksi panggungnya.
+          <p className="text-zinc-300 text-xs md:text-sm leading-relaxed">
+            Diambil dari ungkapan Jawa <em className="text-amber-300">“Siji Dewe”</em>  yang memiliki harapan dan doa di dalamnya <em className="text-amber-300">“Pesona Beda Sendiri”</em>, selalu prioritas untuk menghibur dengan hati dan ketulusan yang abadi. Sejedewe tampil tetap konsisten menyebarkan energi positif di setiap penampilan dan aksi-aksi panggungnya.
           </p>
         </motion.div>
 
@@ -123,20 +134,20 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="bg-[#0e1810]/80 border border-emerald-900/40 rounded-3xl p-6 md:p-8 shadow-xl backdrop-blur-md"
+          className="card-soft rounded-3xl p-6 md:p-8 shadow-xl backdrop-blur-md"
         >
           <div className="flex items-center gap-2 mb-2">
             <Video className="w-6 h-6 text-red-500" />
             <h2 className="text-2xl font-bold text-amber-400">Official Music Video</h2>
           </div>
-          <p className="text-zinc-400 text-sm mb-6">
+          <p className="text-zinc-300 text-sm mb-6">
             Klik di bawah untuk memutar video musik resmi Sejedewe langsung di web ini.
           </p>
           
           <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
             <button
               type="button"
-              onClick={() => setSelectedVideo("https://www.youtube.com/embed/spYSy34Pdsw?autoplay=1")}
+              onClick={() => setSelectedVideo("https://www.youtube-nocookie.com/embed/spYSy34Pdsw?autoplay=1&rel=0")}
               className="group block w-full bg-[#080d09] border border-emerald-900/50 hover:border-red-500/60 rounded-2xl transition-all duration-300 p-6 md:p-8 text-center shadow-inner relative overflow-hidden"
             >
               <div className="w-16 h-16 mx-auto rounded-full bg-red-600/20 text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 flex items-center justify-center mb-3 shadow-lg group-hover:shadow-red-600/50">
@@ -152,20 +163,91 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
+                {/* Spotify */}
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="card-soft rounded-3xl p-6 md:p-8 shadow-xl backdrop-blur-md"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
+            <h2 className="text-2xl font-bold text-amber-400 flex items-center gap-2.5">
+              <Headphones className="w-6 h-6 text-emerald-400" /> Dengarkan Sejedewe
+            </h2>
+            <a
+              href={SPOTIFY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="self-start sm:self-auto text-xs font-semibold text-black bg-emerald-400 hover:bg-emerald-300 px-4 py-2.5 rounded-xl transition-colors"
+            >
+              Buka di Spotify
+            </a>
+          </div>
+          <iframe
+            src={`https://open.spotify.com/embed/artist/${SPOTIFY_ARTIST_ID}?utm_source=generator&theme=0`}
+            title="Sejedewe di Spotify"
+            width="100%"
+            height="352"
+            loading="lazy"
+            allow="encrypted-media; clipboard-write; fullscreen; picture-in-picture"
+            className="rounded-2xl border-0"
+          />
+        </motion.div>
+
+        {/* Jadwal Manggung */}
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="card-soft rounded-3xl p-6 md:p-8 shadow-xl backdrop-blur-md"
+        >
+          <h2 className="text-2xl font-bold text-amber-400 mb-4 flex items-center gap-2.5">
+            <CalendarDays className="w-6 h-6 text-emerald-400" /> Jadwal Manggung
+          </h2>
+          {shows.length === 0 ? (
+            <p className="text-zinc-300 text-sm">
+              Jadwal terbaru belum diumumkan. Pantau{" "}
+              <a href="https://www.instagram.com/sejedeweofficial" target="_blank" rel="noopener noreferrer" className="text-amber-300 underline underline-offset-4">
+                Instagram Sejedewe
+              </a>{" "}
+              untuk info terkini.
+            </p>
+          ) : (
+            <ul className="divide-y divide-white/10">
+              {shows.map((show) => (
+                <li key={`${show.date}-${show.name}`} className="flex flex-col gap-1 py-4 sm:flex-row sm:items-center sm:gap-6">
+                  <span className="sm:w-44 shrink-0 font-semibold text-amber-300">{show.date}</span>
+                  <span className="flex-1">
+                    <span className="block font-semibold text-white">{show.name}</span>
+                    <span className="text-sm text-zinc-300">{show.place}</span>
+                  </span>
+                  {show.link && (
+                    <a href={show.link} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-emerald-400 hover:text-emerald-300">
+                      Info acara
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </motion.div>
+
         {/* Gallery Highlight Section */}
         <motion.div
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="bg-[#0e1810]/80 border border-emerald-900/40 rounded-3xl p-6 md:p-8 shadow-xl backdrop-blur-md"
+          className="card-soft rounded-3xl p-6 md:p-8 shadow-xl backdrop-blur-md"
         >
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 border-b border-emerald-900/50 pb-4">
             <div>
               <h2 className="text-2xl font-bold text-amber-400 flex items-center gap-2.5">
                 <Camera className="w-6 h-6 text-emerald-400" /> Aksi Panggung Sejedewe
               </h2>
-              <p className="text-zinc-400 text-xs md:text-sm mt-1">
+              <p className="text-zinc-300 text-xs md:text-sm mt-1">
                 Dokumentasi keseruan panggung Sejedewe (2025 - 2026).
               </p>
             </div>
@@ -186,14 +268,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="grid grid-cols-2 md:grid-cols-3 gap-4"
           >
-            {[
-              { src: "/gallery/2026-hunterfestival01.jpg", title: "Hunter Festival 2026" },
-              { src: "/gallery/2026-kuntana01.jpg", title: "Kuntana Stage 2026" },
-              { src: "/gallery/2025-gebyartangerang01.jpg", title: "Gebyar Tangerang 2025" },
-              { src: "/gallery/2025-djarumcoklat01.jpg", title: "Djarum Coklat Tour 2025" },
-              { src: "/gallery/2025-libencoffe01.jpg", title: "Liben Coffee 2025" },
-              { src: "/gallery/2025-soul01.jpg", title: "Soul Reggae Night 2025" },
-            ].map((photo, index) => (
+            {highlightPhotos.map((photo, index) => (
               <motion.div
                 key={index}
                 variants={fadeInUp}
@@ -226,7 +301,7 @@ export default function Home() {
               Event Exclusive
             </span>
             <h2 className="text-3xl font-bold text-amber-400 mb-2">Official Merchandise</h2>
-            <p className="text-zinc-400 text-sm max-w-lg mx-auto mb-6">
+            <p className="text-zinc-300 text-sm max-w-lg mx-auto mb-6">
               Koleksi resmi Sejedewe Band tersedia secara terbatas di{" "}
               <span className="text-emerald-400 font-semibold">booth merchandise resmi</span> pada setiap jadwal penampilan/konser kami.
             </p>
@@ -258,30 +333,11 @@ export default function Home() {
                 className="overflow-hidden pt-4"
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                  {[
-                    {
-                      id: 1,
-                      name: "T-Shirt Sejedewe - Cinta di Pantai Bali (Black)",
-                      price: "Rp 135.000",
-                      img: "/gallery/sj1.jpeg", // Ganti sesuai path foto t-shirt hitam kamu
-                    },
-                    {
-                      id: 2,
-                      name: "T-Shirt Sejedewe - Cinta di Pantai Bali (White)",
-                      price: "Rp 135.000",
-                      img: "/gallery/sj2.jpeg", // Ganti sesuai path foto t-shirt putih kamu
-                    },
-                    {
-                      id: 3,
-                      name: "T-Shirt Wanita Munafik (Black)",
-                      price: "Rp 135.000",
-                      img: "/gallery/sj3.jpeg", // Ganti sesuai path foto t-shirt
-                    },
-                  ].map((item) => (
+                  {merchItems.map((item) => (
                     <motion.div
                       key={item.id}
                       whileHover={{ y: -5 }}
-                      className="bg-[#0e1810]/80 border border-emerald-900/40 rounded-2xl overflow-hidden shadow-xl backdrop-blur-md flex flex-col justify-between group"
+                      className="card-soft rounded-2xl overflow-hidden shadow-xl backdrop-blur-md flex flex-col justify-between group"
                     >
                       <div className="relative aspect-square overflow-hidden bg-black/40">
                         <img
@@ -322,7 +378,7 @@ export default function Home() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="bg-[#0e1810]/80 border border-amber-500/30 rounded-3xl p-6 flex flex-col shadow-xl backdrop-blur-md relative overflow-hidden"
+            className="card-soft rounded-3xl p-6 flex flex-col shadow-xl backdrop-blur-md relative overflow-hidden"
           >
             <div>
               <span className="inline-flex items-center gap-1.5 text-xs uppercase font-bold tracking-wider text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/30">
@@ -332,7 +388,7 @@ export default function Home() {
               <h3 className="text-xl font-bold text-white mt-4 mb-2">
                 Business Inquiries & Endorse
               </h3>
-              <p className="text-zinc-400 text-sm mb-6">
+              <p className="text-zinc-300 text-sm mb-6">
                 Hubungi manajemen Sejedewe untuk event, show, dan kolaborasi bisnis:
               </p>
             </div>
@@ -342,12 +398,12 @@ export default function Home() {
               className="mt-auto"
             >
               <a
-                href="https://wa.me/6287870010096"
+                href={`https://wa.me/6287870010096?text=${encodeURIComponent("Halo manajemen Sejedewe, saya ingin tanya booking.\n\nNama acara:\nTanggal:\nLokasi:\nPerkiraan budget:")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2.5 w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-4 rounded-2xl transition duration-300 text-sm shadow-lg shadow-emerald-950/50"
               >
-                <Send className="w-4 h-4 animate-bounce" />
+                <Send className="w-4 h-4 animate-pulse" />
                 WhatsApp: 0878-700-100-96
               </a>
             </motion.div>
@@ -359,7 +415,7 @@ export default function Home() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="bg-[#0e1810]/80 border border-emerald-900/40 rounded-3xl p-6 flex flex-col shadow-xl backdrop-blur-md"
+            className="card-soft rounded-3xl p-6 flex flex-col shadow-xl backdrop-blur-md"
           >
             <div>
               <span className="text-xs uppercase font-bold tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/30">
@@ -368,7 +424,7 @@ export default function Home() {
               <h3 className="text-xl font-bold text-white mt-4 mb-2">
                 Official Channels
               </h3>
-              <p className="text-zinc-400 text-sm mb-6">
+              <p className="text-zinc-300 text-sm mb-6">
                 Ikuti perkembangan lagu, jadwal, dan aktivitas Sejedewe di:
               </p>
             </div>
@@ -376,7 +432,7 @@ export default function Home() {
             <div className="flex flex-wrap items-center justify-center gap-4">
                   {/* Instagram */}
                   <a
-                    href="https://www.instagram.com/sejedeweofficial?igsi=MWRlYTdvNzJ4cmpudw=="
+                    href="https://www.instagram.com/sejedeweofficial"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-2 bg-[#0e1810] border border-emerald-900/50 rounded-full hover:border-pink-500 hover:text-pink-400 transition-all text-sm"
@@ -449,14 +505,16 @@ export default function Home() {
             <button
               type="button"
               onClick={() => setSelectedVideo(null)}
+              aria-label="Tutup video"
               className="absolute top-3 right-3 z-10 bg-black/60 hover:bg-red-600 text-white p-2 rounded-full backdrop-blur-md transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
             <iframe
               className="w-full h-full"
-              src={`${selectedVideo}&autoplay=1`}
-              title="YouTube video player"
+              src={selectedVideo}
+              title="Video resmi Sejedewe"
+              referrerPolicy="strict-origin-when-cross-origin"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
@@ -464,8 +522,9 @@ export default function Home() {
         </div>
       )}
 
-      <footer className="mt-20 text-center text-zinc-500 text-xs border-t border-emerald-950/80 pt-8 pb-4">
+      <footer className="mt-20 text-center text-zinc-400 text-xs border-t border-emerald-950/80 pt-8 pb-4">
         <p>&copy; {new Date().getFullYear()} Sejedewe Reggae Band. All rights reserved.</p>
+        <p className="mt-2"><Link href="/presskit" className="underline underline-offset-4 hover:text-amber-300">Press kit</Link></p>
       </footer>
     </main>
   );

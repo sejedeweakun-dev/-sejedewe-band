@@ -1,17 +1,53 @@
 @import "tailwindcss";
 
-:root {
-  --background: #14381e;
-  --foreground: #ffffff;
-}
+html { scroll-behavior: smooth; }
 
-/* Background hijau khas logo Sejedewe dengan gradasi smooth */
+/* Latar: hijau khas Sejedewe dengan sapuan warna lembut (emas, merah muda, cyan) */
 body {
-  background: radial-gradient(circle at 50% 0%, #1e522d 0%, #12331c 50%, #0a1c0f 100%) !important;
-  background-attachment: fixed !important;
-  color: #ffffff;
+  background:
+    radial-gradient(60% 45% at 50% -5%, rgba(34,197,94,.35), transparent 70%),
+    radial-gradient(45% 40% at 5% 55%, rgba(255,196,60,.14), transparent 70%),
+    radial-gradient(45% 40% at 98% 70%, rgba(255,80,120,.14), transparent 70%),
+    radial-gradient(40% 35% at 55% 105%, rgba(41,231,255,.12), transparent 70%),
+    #07110a;
+  background-attachment: fixed;
+  color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
-  padding: 0;
   min-height: 100vh;
+}
+
+/* Semua transisi memakai kurva halus */
+*, *::before, *::after { transition-timing-function: cubic-bezier(.22, 1, .36, 1); }
+
+/* Kartu kaca dengan garis tepi berwarna yang menyala saat disentuh */
+.card-soft {
+  position: relative;
+  background: linear-gradient(160deg, rgba(20,44,30,.78), rgba(12,20,15,.78) 55%, rgba(34,22,40,.62));
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.06);
+  transition: transform .6s, box-shadow .6s;
+}
+.card-soft::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: linear-gradient(135deg, rgba(34,255,136,.55), rgba(255,210,63,.45), rgba(255,80,120,.45), rgba(41,231,255,.4));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: .45; transition: opacity .6s;
+}
+.card-soft:hover { box-shadow: 0 12px 40px -14px rgba(255,210,63,.28); }
+.card-soft:hover::after { opacity: 1; }
+
+/* Judul SEJEDEWE: gradasi yang mengalir pelan */
+.grad-flow {
+  background: linear-gradient(90deg, #34d399, #fcd34d, #fb7185, #22d3ee, #34d399);
+  background-size: 300% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: flow 12s linear infinite;
+}
+@keyframes flow { to { background-position: -300% 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
